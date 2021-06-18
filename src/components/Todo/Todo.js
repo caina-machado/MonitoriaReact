@@ -1,14 +1,21 @@
 import Checkbox from "../Checkbox/Checkbox";
+import { Container } from "./styles";
 
-import "./Todo.css";
+const Todo = ({ children, todos, setTodos }) => {
+  const handleDelete = () => {
+    const todosAtualizado = todos.filter((todo) => {
+      return todo !== children;
+    });
 
-const Todo = ({ children, handleClick }) => {
+    setTodos(todosAtualizado);
+  };
+
   return (
-    <div className="container">
+    <Container>
       <Checkbox />
       <p>{children}</p>
-      <button onClick={handleClick}>Deletar</button>
-    </div>
+      <button onClick={handleDelete}>Deletar</button>
+    </Container>
   );
 };
 
